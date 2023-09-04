@@ -1,0 +1,33 @@
+.upload {
+  text-align: center;
+}
+
+h1 {
+  margin-top: 50px;
+  color: #333;
+  margin-bottom: 0px;
+}
+.upload-header {
+  padding: 1rem 0;
+}
+
+.image-main {
+  padding: 1rem 30rem;
+}
+
+.image-container- {
+  border: 2px dashed #ccc;
+  padding: 2rem;
+  cursor: pointer;
+}
+.image-preview-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.image-preview {
+  max-width: 100px;
+  height: auto;
+}

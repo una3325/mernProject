@@ -1,0 +1,8 @@
+.app-container {
+  margin-bottom: 0px; /* Nav와 Contact 사이 간격 조절 */
+}
+.Introduction {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  text-align: center;
+}

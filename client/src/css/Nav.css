@@ -1,0 +1,46 @@
+.Nav {
+  background-color: #333;
+  color: #fff;
+  padding: 1.8rem;
+  display: flex;
+  align-items: center;
+}
+
+/*제목이 남는 공간을 차지하는 정도 설정*/
+.title {
+  flex: 1;
+}
+
+.title a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+}
+
+li {
+  /*링크 사이 오른쪽 여백 */
+  margin-right: 1rem;
+}
+
+li:last-child {
+  margin-right: 0;
+}
+
+li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+li a:hover {
+  background-color: #555;
+  padding: 0.5rem;
+  /* padding: 0.5rem 1rem; */
+}

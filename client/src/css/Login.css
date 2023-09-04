@@ -1,0 +1,27 @@
+.Loginbox {
+  max-width: 450px;
+  margin: 0 auto;
+  margin-top: 200px;
+  padding: 40px;
+  background-image: url('../../public/img/16.jpg');
+  background-size: cover; /* 배경 이미지를 컨테이너에 맞게 조절. */
+  background-position: center;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.label {
+  margin-bottom: 8px;
+}
+
+/* 나머지 CSS 규칙은 유지하면 됩니다 */

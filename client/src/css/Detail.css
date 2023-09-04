@@ -1,0 +1,41 @@
+.container {
+  margin-top: 50px;
+  padding: 30px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+}
+
+.col-md-6 {
+  flex: 1;
+  padding: 20px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.btn {
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #858585;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}

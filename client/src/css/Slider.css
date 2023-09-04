@@ -1,0 +1,28 @@
+/* ImageSlider 컴포넌트의 스타일 */
+
+.container {
+  /* 원하는 슬라이더의 최대 너비 설정 */
+  max-width: 1500px; /* 예시: 800px로 설정. 필요에 따라 원하는 크기로 조정 */
+  margin: 0 auto;
+  /* 필요에 따라 다른 스타일 추가 */
+}
+
+.swiper_container {
+  /* 슬라이더의 너비 설정 */
+  width: 100%;
+}
+
+.swiper-slide {
+  /* 슬라이드 내용의 크기와 정렬 설정 */
+  display: flex; /* 슬라이드 내용을 가로로 정렬하려면 사용 */
+  justify-content: center; /* 수평 가운데 정렬 */
+  align-items: center; /* 수직 가운데 정렬 */
+  /* 필요에 따라 다른 스타일 추가 */
+}
+
+/* 슬라이드 이미지 크기 설정 */
+.swiper-slide img {
+  /* 이미지의 최대 높이 설정 */
+  max-height: auto; /* 예시: 300px로 설정. 필요에 따라 원하는 크기로 조정 */
+  /* 필요에 따라 다른 스타일 추가 */
+}
