@@ -1,0 +1,56 @@
+.boardsWrite {
+  color: #000;
+  margin: 50px;
+}
+
+label[for='title'],
+label[for='contents'] {
+  color: #000;
+}
+
+label[for='title'] {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+input[type='text']#title {
+  width: 60%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: #000;
+}
+
+/* 내용 */
+label[for='contents'] {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+textarea#contents {
+  width: 60%;
+  height: 200px;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* 저장 버튼
+button[type='submit'] {
+  background-color: #a7a7a8;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: bold;
+} */
+
+/* 저장 버튼 호버
+button[type='submit']:hover {
+  background-color: #616161;
+} */

@@ -1,6 +1,6 @@
-const router = require('express').Router();
-const Post = require('../models/Post');
-const moment = require('moment');
+const router = require('express').Router()
+const Post = require('../models/Post')
+const moment = require('moment')
 
 router.post('/', async (req, res) => {
   try {
@@ -8,13 +8,13 @@ router.post('/', async (req, res) => {
       title: req.body.title,
       content: req.body.content,
       createdAt: moment().format('YYYY-MM-DD hh:mm:ss'),
-    });
+    })
 
-    const result = await post.save();
-    res.json(result);
+    const result = await post.save()
+    res.json(result)
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    res.status(500).json({ error: err.message })
   }
-});
+})
 
-module.exports = router;
+module.exports = router

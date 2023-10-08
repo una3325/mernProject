@@ -1,37 +1,59 @@
-import axios from 'axios';
-import React, { useState, useContext } from 'react';
-import { LoginContext } from './context/LoginContext';
-import './css/Login.css';
+import axios from 'axios'
+import React, { useState, useContext } from 'react'
+import { LoginContext } from './context/LoginContext'
+import './css/Login.css'
+import { useNavigate } from 'react-router-dom'
 
-export default function Login() {
-  const [id, setId] = useState('');
-  const [pw, setPw] = useState('');
-  const [name, setName] = useState('');
-  const { setIsLogin } = useContext(LoginContext);
+export default function Login({ onLogin, isLoggedIn, onLogout, userName }) {
+  const [id, setId] = useState('')
+  const [pw, setPw] = useState('')
+  const { isLogin, setIsLogin } = useContext(LoginContext)
+  const [name, setName] = useState('')
+  const [user, setUser] = useState('')
+  const navigate = useNavigate()
 
   const login = () => {
     axios({
-      url: 'http://localhost:5000/api',
+      url: 'http://localhost:5000/api/login',
       method: 'POST',
       withCredentials: true,
       data: {
         id: id,
         pw: pw,
       },
-    }).then((result) => {
-      if (result.status === 200) {
-        setIsLogin(true);
-        // 로그인이 성공하면 사용자 이름을 가져와 상태를 업데이트
-        setName(result.data.userName); // userName은 서버에서 받아온 사용자 이름의 필드이다.
-      } else {
-        // 로그인 실패 처리
-      }
-    });
-  };
+    }).then((response) => {
+      if (response.status === 200) {
+        if (response.data.user && response.data.user.name) {
+          console.log('로그인 성공')
+          setIsLogin(true)
+          const userName = response.data.user.name
 
+          // 사용자 정보 업데이트
+          setUser(response.data.user)
+
+          onLogin(userName) // 로그인 시 호출
+          navigate('/')
+        } else {
+          console.log('로그인 실패..')
+          alert('로그인 실패')
+          window.location.reload()
+        }
+      } else {
+        console.log('로그인 실패..')
+        alert('로그인 실패')
+        window.location.reload()
+      }
+    })
+  }
+  const handleLogout = () => {
+    setIsLogin(false)
+    onLogout()
+    navigate('/')
+  }
   return (
     <div className="Loginbox">
       <h1>로그인</h1>
+
       <div>
         <div className="input-container">
           <label htmlFor="id" className="label">
@@ -59,12 +81,16 @@ export default function Login() {
             required
           />
         </div>
-
-        <button onClick={login} className="button">
+        <button
+          onClick={login}
+          isLoggedIn={isLogin}
+          onLogout={handleLogout}
+          name={name}
+          className="login-button"
+        >
           로그인
         </button>
       </div>
-      {name && <p className="welcomeMessage">Welcome, {name}!</p>}
     </div>
-  );
+  )
 }

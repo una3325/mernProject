@@ -7,7 +7,7 @@ const images = [
   },
   {
     title: '드라이브',
-    detail: '호홍',
+    detail: '이예준 방구 냄새 지독했던 날 호홍',
     url: `${process.env.PUBLIC_URL}/img/8.jpg`,
     id: '8',
   },
@@ -19,7 +19,7 @@ const images = [
   },
   {
     title: '꽃축제',
-    detail: '데이튜',
+    detail: '사귀고 첫 데이튜',
     url: `${process.env.PUBLIC_URL}/img/10.jpg`,
     id: '10',
   },
@@ -85,7 +85,8 @@ const images = [
   },
   {
     title: '강릉',
-    detail: '카페... 가기 전에 도깨비 촬영장',
+    detail:
+      '카페... 가기 전에 도깨비 촬영장에서 사진찍었는데 날라가서 속상했던 기억이 남네유',
     url: `${process.env.PUBLIC_URL}/img/21.jpg`,
     id: '21',
   },
@@ -109,31 +110,31 @@ const images = [
   },
   {
     title: '한강',
-    detail: '한강이얌',
+    detail: '이건 사귀기 전에 갔던 한강이얌',
     url: `${process.env.PUBLIC_URL}/img/25.jpg`,
     id: '25',
   },
   {
     title: '아라뱃길',
-    detail: '이땐 또 추웠는데',
+    detail: '이땐 또 추웠는데 첨 손잡은날~~놀랍게도 사귀기전',
     url: `${process.env.PUBLIC_URL}/img/26.jpg`,
     id: '26',
   },
   {
-    title: '이건 언제 찍은거쥥',
+    title: '이건 언제 찍은거쥥 사우동인데',
     detail: '오잉',
     url: `${process.env.PUBLIC_URL}/img/27.jpg`,
     id: '27',
   },
   {
     title: '카페에',
-    detail: '미나리 삼겹살 먹은날',
+    detail: '미나리 삼겹살 먹은날 맞죵',
     url: `${process.env.PUBLIC_URL}/img/28.jpg`,
     id: '28',
   },
   {
     title: '카페에에 ',
-    detail: '이건 카페에에 이사진입니당',
+    detail: '이건 이예준이 찍은 사진입니당',
     url: `${process.env.PUBLIC_URL}/img/29.jpg`,
     id: '29',
   },
@@ -143,6 +144,6 @@ const images = [
     url: `${process.env.PUBLIC_URL}/img/30.jpg`,
     id: '30',
   },
-]
+];
 
-export default images
+export default images;

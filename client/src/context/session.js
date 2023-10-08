@@ -1,31 +1,31 @@
-import React, { createContext, useState, useContext, useEffect } from 'react';
-import axios from 'axios';
+import React, { createContext, useState, useContext, useEffect } from 'react'
+import axios from 'axios'
 
-const SessionContext = createContext();
+const SessionContext = createContext()
 
 export function SessionProvider({ children }) {
-  const [isLogin, setIsLogin] = useState(false);
-  const [userName, setUserName] = useState('');
+  const [isLogin, setIsLogin] = useState(false)
+  const [userName, setUserName] = useState('')
 
   const checkSession = async () => {
     try {
-      const response = await axios.get('/check-session');
-      const userData = response.data.user;
+      const response = await axios.get('/check-session')
+      const userData = response.data.user
 
       if (userData) {
-        setIsLogin(true);
-        setUserName(userData.name);
+        setIsLogin(true)
+        setUserName(userData.name)
       } else {
-        setIsLogin(false);
+        setIsLogin(false)
       }
     } catch (error) {
-      console.error('세션 확인 실패:', error);
+      console.error('세션 확인 실패:', error)
     }
-  };
+  }
 
   useEffect(() => {
-    checkSession();
-  }, []); // 컴포넌트가 마운트될 때 세션 확인
+    checkSession()
+  }, []) // 컴포넌트가 마운트될 때 세션 확인
 
   return (
     <SessionContext.Provider
@@ -33,9 +33,9 @@ export function SessionProvider({ children }) {
     >
       {children}
     </SessionContext.Provider>
-  );
+  )
 }
 
 export function useSession() {
-  return useContext(SessionContext);
+  return useContext(SessionContext)
 }

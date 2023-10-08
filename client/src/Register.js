@@ -1,20 +1,23 @@
-import React, { useState } from 'react';
-import './css/Register.css';
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom' // useHistory 대신 useNavigate를 가져옵니다.
+import './css/Register.css'
 
 const CreateUserForm = () => {
-  const [id, setId] = useState('');
-  const [pw, setPw] = useState('');
-  const [pw2, setPw2] = useState('');
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
+  const [id, setId] = useState('')
+  const [pw, setPw] = useState('')
+  const [pw2, setPw2] = useState('')
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [phone, setPhone] = useState('')
+
+  const navigate = useNavigate() // useNavigate를 사용하여 navigate 함수를 가져옵니다.
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
+    event.preventDefault()
 
     if (pw !== pw2) {
-      alert('비밀번호가 일치하지 않습니다. 다시 확인해주세요.');
-      return;
+      alert('비밀번호가 일치하지 않습니다. 다시 확인해주세요.')
+      return
     }
 
     const userData = {
@@ -24,9 +27,9 @@ const CreateUserForm = () => {
       name: name,
       email: email,
       phone: phone,
-    };
+    }
 
-    console.log(JSON.stringify(userData));
+    console.log(JSON.stringify(userData))
     try {
       const response = await fetch('http://localhost:5000/api/users', {
         method: 'POST',
@@ -34,35 +37,22 @@ const CreateUserForm = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(userData),
-      });
+      })
 
-      const data = await response.text(); //json 형식으로 하면 오류나는 거 이해가 잘 안간다.
-      console.log(data); // 서버로부터의 응답 데이터 출력 (선택사항)
-      alert(data); // 서버로부터의 응답 데이터 메시지 출력 (선택사항)
+      const data = await response.text()
+      console.log(data)
+
+      if (response.status === 200) {
+        alert('사용자 생성에 성공했습니다.')
+        navigate('/login') // /login 페이지로 리디렉트
+      } else {
+        alert('사용자 생성에 실패했습니다.')
+      }
     } catch (error) {
-      console.error('요청 실패:', error);
-      alert('요청에 실패했습니다. 다시 시도해주세요.');
+      console.error('요청 실패:', error)
+      alert('요청에 실패했습니다. 다시 시도해주세요.')
     }
-  };
-
-  /*  오류남
-     const responseData = await response.json(); // 백엔드에서 전달한 JSON 응답을 파싱
-
-    if (response.ok) {
-      // 응답이 성공적인 경우 (HTTP 상태 코드 200번대)
-      console.log(responseData); // 백엔드로부터의 응답 데이터 출력 (선택사항)
-      alert('새로운 사용자가 저장되었습니다.'); // 성공 메시지 알림
-    } else {
-      // 응답이 실패한 경우 (HTTP 상태 코드 200번대 이외의 코드)
-      console.error(responseData.err); // 에러 메시지 콘솔 출력
-      alert(responseData.err); // 실패 메시지 알림
-    }
-  } catch (error) {
-    console.error('요청 실패:', error);
-    alert('요청에 실패했습니다. 다시 시도해주세요.');
   }
-};*/
-
   return (
     <div className="box">
       <h1>회원가입</h1>
@@ -133,10 +123,12 @@ const CreateUserForm = () => {
           required
         />
         <br />
-        <button type="submit">생성</button>
+        <button type="submit" className="regi-create-button">
+          생성
+        </button>
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default CreateUserForm;
+export default CreateUserForm

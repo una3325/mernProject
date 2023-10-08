@@ -1,17 +1,22 @@
-import './css/Nav.css';
+import React from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import './css/Nav.css'
 
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+export default function Nav({ isLoggedIn, onLogout, userName, setIsLogin }) {
+  const navigate = useNavigate()
 
-export default function Nav({ isLoggedIn, onLogout }) {
-  const navigate = useNavigate();
+  const handleLogout = async () => {
+    try {
+      await onLogout() // 로그아웃 요청이 완료될 때까지 대기
+      setIsLogin(false) // 로그아웃 상태로 변경
 
-  const handleLogout = () => {
-    // 로그아웃 시 클라이언트와 서버에서 세션을 삭제하는 작업 필요
-    // 서버에 로그아웃 요청을 보내고 세션을 삭제하는 등의 처리를 해야 함
-    onLogout(); // 클라이언트에서의 로그아웃 처리 (예시)
-    navigate.push('/'); // 홈 화면으로 이동
-  };
+      // 로그아웃 요청이 완료된 후에 홈 페이지로 이동
+      navigate('/')
+    } catch (error) {
+      console.error('로그아웃 오류:', error)
+    }
+  }
+  console.log('userName:', userName)
 
   return (
     <nav className="Nav">
@@ -23,10 +28,25 @@ export default function Nav({ isLoggedIn, onLogout }) {
         {isLoggedIn ? (
           <>
             <li>
-              <span>안녕하세요, 님!</span>
+              {userName ? (
+                <span>{userName}님, 환영합니다</span>
+              ) : (
+                <span>사용자 이름을 불러올 수 없습니다.</span>
+              )}
             </li>
             <li>
-              <button onClick={handleLogout}>로그아웃</button>
+              <Link to="/Mypage">마이페이지</Link>
+            </li>
+            <li>
+              <Link to="/upload">사진업로드</Link>
+            </li>
+            <li>
+              <Link to="/Boards">자유게시판</Link>
+            </li>
+            <li>
+              <button className="logout-button" onClick={handleLogout}>
+                로그아웃
+              </button>
             </li>
           </>
         ) : (
@@ -39,16 +59,7 @@ export default function Nav({ isLoggedIn, onLogout }) {
             </li>
           </>
         )}
-        <li>
-          <Link to="/Mypage">마이페이지</Link>
-        </li>
-        <li>
-          <Link to="/upload">사진업로드</Link>
-        </li>
-        <li>
-          <Link to="/">자유게시판</Link>
-        </li>
       </ul>
     </nav>
-  );
+  )
 }

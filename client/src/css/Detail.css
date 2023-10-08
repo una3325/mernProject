@@ -29,13 +29,3 @@ p {
   font-size: 20px;
   margin-bottom: 20px;
 }
-
-.btn {
-  padding: 10px 20px;
-  font-size: 18px;
-  background-color: #858585;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-}
